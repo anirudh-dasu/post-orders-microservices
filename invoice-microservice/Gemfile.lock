@@ -20,6 +20,7 @@ GEM
       url_mount (~> 0.2.1)
     pg (0.21.0)
     rack (2.0.3)
+    rake (11.2.2)
     sequel (5.4.0)
     transproc (1.0.2)
     url_mount (0.2.1)
@@ -34,6 +35,7 @@ DEPENDENCIES
   hanami-router
   pg
   rack
+  rake
   sequel
 
 BUNDLED WITH

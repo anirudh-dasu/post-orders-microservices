@@ -1,0 +1,8 @@
+require_relative 'config/application.rb'
+require_relative 'queue/rabbitmq_connection_subscriber'
+
+task default: %w[consume_orders]
+
+task :consume_orders do
+	QueueConnectionSubscriber.subscribe
+end

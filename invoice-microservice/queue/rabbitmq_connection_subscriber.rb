@@ -15,7 +15,7 @@ module QueueConnectionSubscriber
 
   def self.subscribe
     @queue = @queue || get_exchange
-    @queue.subscribe(:block => true, :manual_ack => false) do |delivery_info, properties, payload|
+    @queue.subscribe(:block => true) do |delivery_info, properties, payload|
       OrderConsumer.consume_load(delivery_info,properties,payload)
     end
   end
