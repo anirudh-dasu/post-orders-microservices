@@ -18,18 +18,9 @@ GEM
     http_router (0.11.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
-    mustermann (1.0.1)
     pg (0.21.0)
     rack (2.0.3)
-    rack-protection (2.0.0)
-      rack
     sequel (5.4.0)
-    sinatra (2.0.0)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.0)
-      tilt (~> 2.0)
-    tilt (2.0.8)
     transproc (1.0.2)
     url_mount (0.2.1)
       rack
@@ -44,7 +35,6 @@ DEPENDENCIES
   pg
   rack
   sequel
-  sinatra
 
 BUNDLED WITH
    1.12.5
