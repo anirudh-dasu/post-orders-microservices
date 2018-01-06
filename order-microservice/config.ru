@@ -10,6 +10,7 @@ if File.exist?(db_config_file)
   ## migration extension for sequel.
   Sequel.extension :migration
   Sequel::Model.plugin :timestamps, update_on_create: true
+  Sequel::Model.plugin :json_serializer
 end
 
 # If there is a database connection, run all the migrations
