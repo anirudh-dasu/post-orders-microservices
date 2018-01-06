@@ -1,0 +1,40 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    amq-protocol (2.2.0)
+    bunny (2.8.0)
+      amq-protocol (>= 2.2.0)
+    concurrent-ruby (1.0.5)
+    hanami-controller (1.1.1)
+      hanami-utils (~> 1.1)
+      rack (~> 2.0)
+    hanami-router (1.1.0)
+      hanami-utils (~> 1.1)
+      http_router (= 0.11.2)
+      rack (~> 2.0)
+    hanami-utils (1.1.1)
+      concurrent-ruby (~> 1.0)
+      transproc (~> 1.0)
+    http_router (0.11.2)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
+    pg (0.21.0)
+    rack (2.0.3)
+    sequel (5.4.0)
+    transproc (1.0.2)
+    url_mount (0.2.1)
+      rack
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bunny
+  hanami-controller
+  hanami-router
+  pg
+  rack
+  sequel
+
+BUNDLED WITH
+   1.12.5
