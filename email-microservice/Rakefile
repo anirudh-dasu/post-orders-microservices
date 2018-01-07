@@ -1,0 +1,7 @@
+require_relative 'queue/rabbitmq_connection_subscriber'
+
+task default: %w[consume_invoices]
+
+task :consume_invoices do
+	QueueConnectionSubscriber.subscribe
+end

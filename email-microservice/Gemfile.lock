@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    amq-protocol (2.2.0)
+    bunny (2.8.0)
+      amq-protocol (>= 2.2.0)
+    pg (0.21.0)
+    rack (2.0.3)
+    rake (12.3.0)
+    sequel (5.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bunny
+  pg
+  rack
+  rake
+  sequel
+
+BUNDLED WITH
+   1.12.5
