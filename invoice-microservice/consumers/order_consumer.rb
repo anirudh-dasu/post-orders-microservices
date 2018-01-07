@@ -13,12 +13,12 @@ class OrderConsumer < Bunny::Consumer
   def self.consume_load(delivery_info, properties, payload)
     payload_hash = JSON.parse(payload).to_h
     payload_hash.delete('id')
-    invoice = Invoice.new(payload_hash)
-    if invoice.save 
-      QueueConnectionPusher.publish(invoice.to_json)
-    else
-      halt 422
-    end
+    order = Order.create(payload_hash)
+    #Perform whatever validations are needed for invoice generation. Save in db if successful, don't if it isn't.
+    ## Saving to db is optional and not necessary. For better performance, skip saving to db.
+    invoice = Invoice.new(order_id: order.id, content: order.generate_invoice_text)
+    invoice.save
+    QueueConnectionPusher.publish(order.to_json(include: :invoice))
   end
 
 end
