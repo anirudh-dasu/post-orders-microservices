@@ -1,3 +1,4 @@
+require_relative 'config/application.rb'
 require_relative 'queue/rabbitmq_connection_subscriber'
 
 task default: %w[consume_invoices]

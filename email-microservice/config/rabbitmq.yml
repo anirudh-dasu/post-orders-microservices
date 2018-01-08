@@ -1,0 +1,4 @@
+host: guest:guest@localhost
+port: 5672
+exchange: microservices
+queue: invoices_email

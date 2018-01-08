@@ -1,7 +1,6 @@
 require "bunny"
-require_relative '../consumers/invoice_consumer'
 
-module QueueConnectionSubscriber
+module QueueConnectionPublisher
   @exchange = nil
   @queue    = nil
 
@@ -17,12 +16,8 @@ module QueueConnectionSubscriber
     @queue     = channel.queue(RABBIT_CONFIG['queue'], :durable => true).bind(@exchange)
   end
 
-  def self.subscribe
-    @queue = @queue || get_exchange
-    @queue.subscribe(:block => true) do |delivery_info, properties, payload|
-      InvoiceConsumer.consume_load(delivery_info,properties,payload)
-    end
+  def self.publish(message)
+    @exchange = @exchange || get_exchange
+    @exchange.publish(message, routing_key: @queue.name)
   end
-
- 
 end

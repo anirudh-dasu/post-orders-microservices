@@ -23,3 +23,7 @@ Dir[File.join(File.dirname(__FILE__), '../app/models', '**', '*.rb')].sort.each 
 
 # Load controllers
 Dir[File.join(File.dirname(__FILE__), '../app/controllers', '**', '*.rb')].sort.each {|file| require file }
+
+# Rabbitmq
+rabbit_config_file = File.join(File.dirname(__FILE__),'','rabbitmq.yml')
+RABBIT_CONFIG = YAML.load(File.read(rabbit_config_file))

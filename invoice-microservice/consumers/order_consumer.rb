@@ -1,5 +1,5 @@
 require 'json'
-require_relative '../queue/rabbitmq_connection_pusher'
+require_relative '../queue/rabbitmq_connection_publisher'
 
 class OrderConsumer < Bunny::Consumer
   def cancelled?
@@ -18,7 +18,8 @@ class OrderConsumer < Bunny::Consumer
     ## Saving to db is optional and not necessary. For better performance, skip saving to db.
     invoice = Invoice.new(order_id: order.id, content: order.generate_invoice_text)
     invoice.save
-    QueueConnectionPusher.publish(order.to_json(include: :invoice))
+    QueueConnectionPublisher.publish(order.to_json(include: :invoice))
+    puts "Published order with invoice"
   end
 
 end

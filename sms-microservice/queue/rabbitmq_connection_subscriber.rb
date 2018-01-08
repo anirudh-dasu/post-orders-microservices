@@ -5,12 +5,16 @@ module QueueConnectionSubscriber
   @exchange = nil
   @queue    = nil
 
-  def self.get_exchange
-    connection = Bunny.new("amqp://guest:guest@localhost:5672")
+  def self.connect_to_rabbitmq
+    connection = Bunny.new("amqp://#{RABBIT_CONFIG['host']}:#{RABBIT_CONFIG['port']}")
     connection.start
-    channel    = connection.create_channel
-    @exchange  = channel.direct("microservice", durable: true)
-    @queue     = channel.queue("invoices_sms", :durable => true).bind(@exchange)
+    connection
+  end
+
+  def self.get_exchange
+    channel    = connect_to_rabbitmq.create_channel
+    @exchange  = channel.direct(RABBIT_CONFIG['exchange'], durable: true)
+    @queue     = channel.queue(RABBIT_CONFIG['queue'], :durable => true).bind(@exchange)
   end
 
   def self.subscribe

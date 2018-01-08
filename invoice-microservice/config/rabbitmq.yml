@@ -1,0 +1,6 @@
+host: guest:guest@localhost
+port: 5672
+exchange: microservices
+queue_sub: orders
+queue_pub_sms: invoices_sms
+queue_pub_email: invoices_email
