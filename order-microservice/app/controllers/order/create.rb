@@ -5,8 +5,8 @@ require_relative '../../../queue/rabbitmq_connection_publisher'
 class Order < Sequel::Model(DB)
 
 	class Create 
-
     	include ::Hanami::Action
+        accept :json
 
         params do
             required(:product_name).filled(:str?)
@@ -23,6 +23,7 @@ class Order < Sequel::Model(DB)
     		if order.save
     			self.body = order.to_json
     			QueueConnectionPublisher.publish(order.to_json)
+                puts "Order with id -#{order.id} successfully saved. Published to queue"
     		else
     			halt 422
     		end

@@ -51,6 +51,8 @@ GEM
     inflecto (0.0.2)
     pg (0.21.0)
     rack (2.0.3)
+    rack-contrib (2.0.1)
+      rack (~> 2.0)
     sequel (5.4.0)
     transproc (1.0.2)
     url_mount (0.2.1)
@@ -66,6 +68,7 @@ DEPENDENCIES
   hanami-validations
   pg
   rack
+  rack-contrib
   sequel
 
 BUNDLED WITH

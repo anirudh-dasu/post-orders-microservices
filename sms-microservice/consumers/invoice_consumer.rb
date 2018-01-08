@@ -14,7 +14,7 @@ class InvoiceConsumer < Bunny::Consumer
     if !payload_hash['invoice'].nil?
       #Invoice successfully generated
       #Send an sms with order info and invoice content
-      puts "Sms with invoice sent"
+      puts "Sms with invoice id #{payload_hash['invoice']['id']} sent"
     else
       #No invoice present
       #Send an sms only with order info

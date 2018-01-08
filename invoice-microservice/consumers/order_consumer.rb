@@ -19,7 +19,7 @@ class OrderConsumer < Bunny::Consumer
     invoice = Invoice.new(order_id: order.id, content: order.generate_invoice_text)
     invoice.save
     QueueConnectionPublisher.publish(order.to_json(include: :invoice))
-    puts "Published order with invoice"
+    puts "Published order and invoice with invoice-id #{invoice.id} to queue"
   end
 
 end

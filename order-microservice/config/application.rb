@@ -1,6 +1,7 @@
 require_relative '../app'
 require 'yaml'
 require 'sequel'
+require 'rack/contrib'
 
 
 db_config_file = File.join(File.dirname(__FILE__), '', 'database.yml')
